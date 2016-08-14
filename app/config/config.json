@@ -1,0 +1,16 @@
+{
+  "port": 7777,
+  "UploadDir": "uploads",
+  "db": {
+    "dbAdress": "mongodb://localhost/fileShare"
+  },
+  "maxUploadFileSizeMB" : "50",
+  "session": {
+    "secret": "secret_key",
+    "resave": false,
+    "saveUninitialized": true,
+    "cookie": {
+      "maxAge": null
+    }
+  }
+}
