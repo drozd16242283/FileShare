@@ -6,7 +6,7 @@ var multerUpload = (req, res, next) => {
         if (err) {
             if (err.code === 'LIMIT_FILE_SIZE') {
                 log.error('Файл слишком большой');
-                req.flash('error', 'Файл слишком большой');
+                req.flash('uploadError', 'Файл слишком большой');
                 res.redirect('/');
             }
         } else {

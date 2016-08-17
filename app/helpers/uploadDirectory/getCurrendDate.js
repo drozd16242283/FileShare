@@ -1,4 +1,3 @@
-
 /**
 * This function returns the currend date (dd-mm-yyyy)
 */

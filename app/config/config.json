@@ -7,9 +7,10 @@
   "maxUploadFileSizeMB" : "50",
   "session": {
     "secret": "secret_key",
-    "resave": false,
+    "resave": true,
     "saveUninitialized": true,
     "cookie": {
+      "httpOnly": true,
       "maxAge": null
     }
   }

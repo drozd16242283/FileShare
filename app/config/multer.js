@@ -1,7 +1,7 @@
 'use strict';
 const multer              = require('multer');
 const config              = require('./index');
-const getCurrentUploadDir = require('../helpers/uploadDirectory/getUploadDirectory');
+const getCurrentUploadDir = require('../helpers/uploadDirectory/getPathToUploadDir');
 
 
 // MAX_FILE_SIZE is set max size of uploaded files is bytes (50 mb)

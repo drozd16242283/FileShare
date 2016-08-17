@@ -1,16 +1,18 @@
-//var multer = require('../config/multer');
+const File = require('../file');
+const ifCurrentUploadDirExists = require('../helpers/uploadDirectory/checkIfUploadDirExists');
 
+exports.ShowUploadPage = (req, res) => {
+    ifCurrentUploadDirExists();
 
-exports.ShowUploadForm = (req, res) => {
-    var errorMessage = req.flash('error');
+    var uploadErrorMessage = req.flash('uploadError');
+
 
     res.render('index', {
-        error: errorMessage
+        error: uploadErrorMessage
     });
 };
 
 exports.UploadFile = (req, res) => {
-    //console.log(req.flash('info'));
-    console.log(req.file);
-    res.send('success');
+    var file = new File(req.file);
+    res.send(file);
 };

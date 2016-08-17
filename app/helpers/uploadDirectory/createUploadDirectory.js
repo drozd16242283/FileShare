@@ -1,14 +1,14 @@
-const mkdirp     = require('mkdirp');
-const log        = require('../../libs/log')(module);
+const mkdirp = require('mkdirp');
+const log    = require('../../libs/log')(module);
 
-const currentUploadDirectory = require('./getUploadDirectory');
+const currentPathToUploadDirectory = require('./getPathToUploadDir');
 
 /**
-* This function is create the upload directory by ${currentUploadDirectory} value
+* This function is create the upload directory by {currentUploadDirectory} value
 * For example: "uploads/07-08-2016"
 */
 var createUploadDirectory = () => {
-    mkdirp(currentUploadDirectory, err => {
+    mkdirp(currentPathToUploadDirectory, err => {
         if (err) log.error(err);
     });
 };

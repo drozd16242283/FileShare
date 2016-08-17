@@ -8,8 +8,8 @@ class File {
         this.isImage       = this.isImage(file.mimetype);
         this.filePath      = file.path;
         this.fileSize      = this.setFormatFileSize(file.size);
-        this.token         = this.genFileToken();
-        this.downloadLink  = this.getDownloadLink();
+        //this.token         = this.genFileToken();
+        //this.downloadLink  = this.getDownloadLink();
     }
 
     getFileName() {
