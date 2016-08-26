@@ -7,7 +7,7 @@ var Navigation = React.createClass({
                 <nav className="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
                     <div className="container">
                         <div className="navbar-header">
-                            <a className="navbar-brand" href={this.props.redirectLink}>File Share</a>
+                            <a className="navbar-brand" href="/">File Share</a>
                         </div>
                         <div className="row">
                             <div className="col-md-10 col-sm-10 col-xs-5">

@@ -1,18 +1,23 @@
-const File = require('../file');
+'use strict';
 const ifCurrentUploadDirExists = require('../helpers/uploadDirectory/checkIfUploadDirExists');
+
+const File = require('../helpers/fileClass');
+
+const fileDBqueries = require('../models/DBqueries/fileDBqueries');
+
 
 exports.ShowUploadPage = (req, res) => {
     ifCurrentUploadDirExists();
 
-    var uploadErrorMessage = req.flash('uploadError');
+    let uploadErrorMessage = req.flash('uploadError');
 
-
-    res.render('index', {
-        error: uploadErrorMessage
-    });
+    res.json({ status: 'true' });
 };
 
 exports.UploadFile = (req, res) => {
-    var file = new File(req.file);
-    res.send(file);
+    let file = new File(req.file);
+
+    fileDBqueries.saveFileInfoToDB(file.getFullFileInfo());
+
+    res.redirect(`/${file.fileToken}`);
 };

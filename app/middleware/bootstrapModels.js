@@ -3,21 +3,16 @@ const path = require('path');
 const fs   = require('fs');
 
 let bootstrapModels = (req, res, next) => {
-    if (req.session.bootstrap) {
-        let models = path.join(__dirname, '../models');
+    let models = path.join(__dirname, '../models');
+    let files = fs.readdirSync(models)
+        .filter(file => file !== 'DBqueries');
 
-        var files = fs.readdirSync(models);
-
-        for(let i in files) {
-            require(path.join(models, files[i]));
-        }
-        console.log('models');
-
-    } else {
-        req.session.bootstrap = true;
-
-        next();
+    for(let i in files) {
+        require(path.join(models, files[i]));
     }
+    
+    next();
 };
+
 
 module.exports = bootstrapModels;

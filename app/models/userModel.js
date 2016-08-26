@@ -44,5 +44,4 @@ User.methods.checkPassword = password => {
 };
 
 
-
 exports.User = mongoose.model('User', User);
