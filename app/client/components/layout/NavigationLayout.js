@@ -1,7 +1,8 @@
-var React = require('react');
+import React from 'react'
+import { Link } from 'react-router'
 
-var Navigation = React.createClass({
-    render: function() {
+export default React.createClass({
+    render() {
         return (
             <div className="navigation">
                 <nav className="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
@@ -10,23 +11,19 @@ var Navigation = React.createClass({
                             <a className="navbar-brand" href="/">File Share</a>
                         </div>
                         <div className="row">
-                            <div className="col-md-10 col-sm-10 col-xs-5">
+                            <div className="col-md-10 col-sm-10 col-xs-6">
                                 <div className="navbar-form navbar-right">
-                                    <button className="btn btn-link">
-                                        <a href="/signup">Зарегистрироватся</a>
-                                    </button>
-                                    <button className="btn btn-link">
-                                        <a href="/signin">Войти</a>
-                                    </button>
+                                    <Link className="navLink" to="/files">Все файлы</Link>
+                                    <Link className="navLink" to="/signup">Зарегистрироватся</Link>
+                                    <Link className="navLink" to="/signin">Войти</Link>
                                     <input className="form-control" type="text"/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </nav>
+                {this.props.children}
             </div>
         );
     }
 });
-
-module.exports = Navigation;

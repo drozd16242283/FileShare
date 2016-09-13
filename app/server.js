@@ -18,7 +18,9 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended:true }));
 
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.use(session({
@@ -33,9 +35,12 @@ app.use(flash());
 
 
 
-require('./routes')(app);
+app.use('/api', require('./routes'));
 
 
+app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 //require('./app/config/passport');
 

@@ -11,10 +11,11 @@ exports.ShowUploadPage = (req, res) => {
 
     let uploadErrorMessage = req.flash('uploadError');
 
-    res.json({ status: 'true' });
+    res.send('Hello');
 };
 
 exports.UploadFile = (req, res) => {
+    console.log(req.file);
     let file = new File(req.file);
 
     fileDBqueries.saveFileInfoToDB(file.getFullFileInfo());
