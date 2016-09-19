@@ -1,5 +1,4 @@
-'use strict';
-const randomToken = require('rand-token');
+import randomToken from 'rand-token'
 
 class File {
     constructor(file) {
@@ -62,4 +61,4 @@ class File {
 }
 
 
-module.exports = File;
+export default File

@@ -1,4 +1,6 @@
-const config   = require('../config/');
+import config from '../config/'
+
+//const config   = require('../config/');
 const mongoose = require('mongoose');
 
 const connectUrl = config.get('db:dbAdress');

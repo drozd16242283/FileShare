@@ -2,7 +2,10 @@ import React from 'react'
 
 import Navigation from './layout/NavigationLayout'
 
+
+
 export default React.createClass({
+
 
     handleSubmit() {
         alert('hello');

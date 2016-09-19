@@ -1,4 +1,5 @@
-const path = require('path');
+const webpack = require('webpack');
+const path    = require('path');
 
 module.exports = {
     entry: path.join(__dirname, 'app/client/index.js'),
@@ -12,8 +13,14 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader?presets[]=es2015&presets[]=react'
+                exclude: [
+                    path.resolve(__dirname, "node_modules")
+                ],
+                loader: 'babel?presets[]=es2015&presets[]=react'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     },

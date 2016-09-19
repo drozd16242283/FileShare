@@ -1,5 +1,4 @@
 'use strict';
-//const mongoose = require('../../libs/mongoose');
 
 const File = require('../../models/fileModel').File;
 

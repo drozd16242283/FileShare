@@ -12,10 +12,10 @@ const fileDBqueries = require('./models/DBqueries/fileDBqueries');
     router.post('/', fileUploadingMiddleware, FileLoadController.UploadFile);
 
     router.get('/files', (req, res) => {
-        fileDBqueries.findAllFiles((data, err) => {
+        fileDBqueries.findAllFiles((err, data) => {
             if (err) throw err;
 
-            console.log(data);
+            res.json(data[1].token);
         });
     });
 

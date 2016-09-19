@@ -1,2 +1,3 @@
-require('node-jsx').install({ harmony: true });
+require('babel-core/register');
+require('babel-polyfill');
 require('./app/server');

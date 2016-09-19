@@ -1,17 +1,19 @@
-const mkdirp = require('mkdirp');
+import mkdirp from 'mkdirp'
+
+import currentPathToUploadDirectory from './getPathToUploadDir'
+
+
 const log    = require('../../libs/log')(module);
 
-const currentPathToUploadDirectory = require('./getPathToUploadDir');
 
 /**
 * This function is create the upload directory by {currentUploadDirectory} value
 * For example: "uploads/07-08-2016"
 */
-var createUploadDirectory = () => {
+export default createUploadDirectory = () => {
     mkdirp(currentPathToUploadDirectory, err => {
-        if (err) log.error(err);
-    });
-};
-
-
-module.exports = createUploadDirectory;
+        if (err) {
+            log.error(err);
+        }
+    })
+}

@@ -1,14 +1,13 @@
-const express      = require('express');
-const path         = require('path');
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const flash        = require('express-flash');
-const session      = require('express-session');
-//const mongoose     = require('./app/libs/mongoose');
-const MongoStore   = require('connect-mongo')(session);
+import express      from 'express';
+import path         from 'path';
+import bodyParser   from 'body-parser';
+import cookieParser from 'cookie-parser';
+import flash        from 'express-flash';
+import session      from 'express-session';
+import MongoStore   from 'connect-mongo';
 
 // require config
-const config       = require('./config');
+import config       from './config';
 //const log          = require('./libs/log')(module);
 
 
@@ -22,25 +21,25 @@ app.use(bodyParser.urlencoded({ extended:true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
 app.use(session({
     secret: config.get('session:secret'),
     resave: config.get('session:resave'),
     saveUninitialized: config.get('session:saveUninitialized'),
-    cookie: config.get('session:cookie'),
-    store: new MongoStore({ url: config.get('db:dbAdress') })
+    cookie: config.get('session:cookie')
+    //store: new MongoStore({ url: config.get('db:dbAdress') })
 }));
 
 app.use(flash());
 
 
-
-app.use('/api', require('./routes'));
+app.use('/api', require('./api/'));
 
 
 app.get('*', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
+
+
 
 //require('./app/config/passport');
 

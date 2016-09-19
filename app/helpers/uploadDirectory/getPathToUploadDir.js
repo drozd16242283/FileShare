@@ -1,6 +1,8 @@
-const config = require('../../config');
-const currentDate = require('./getCurrendDate');
+import config from '../../config/'
+import currentDate from './getCurrendDate'
+
 
 const uploadDirName = `../${config.get('UploadDir')}/${currentDate()}`;
+
 
 module.exports = uploadDirName;

@@ -6,7 +6,7 @@ export default React.createClass({
             <div>
                 <h1>File Page</h1>
                 <br />
-                <h1>{this.props.params.fileId}</h1>
+                <h1>{this.props.params}</h1>
             </div>
         );
     }

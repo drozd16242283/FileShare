@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const ifCurrentUploadDirExists = require('../helpers/uploadDirectory/checkIfUploadDirExists');
 
 const File = require('../helpers/fileClass');

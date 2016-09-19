@@ -1,23 +1,17 @@
-const pathExists = require('path-exists');
+import pathExists                   from 'path-exists'
 
-const currentPathToUploadDirectory = require('./getPathToUploadDir');
-const createUploadDirectory        = require('./createUploadDirectory');
+import currentPathToUploadDirectory from './getPathToUploadDir'
+import createUploadDirectory        from './createUploadDirectory'
 
 
 /**
  *  This function is checking if upload directory exists.
  *  If not, it creates them.
  */
-const checkIfUploadDirectoryExists = () => {
+export default checkIfUploadDirectoryExists = () => {
     pathExists(currentPathToUploadDirectory).then(exists => {
         if (!exists) {
             createUploadDirectory();
-        } else {
-            // directory exists
-            return;
         }
     })
-};
-
-
-module.exports = checkIfUploadDirectoryExists;
+}
