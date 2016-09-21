@@ -12,6 +12,8 @@ import allFilesPage    from './components/allFiles'
 import signInPage from './components/Authentication/signin'
 import signUpPage from './components/Authentication/signup'
 
+import NotFoundPage from './components/NotFound'
+
 
 render((
     <Router history={browserHistory}>
@@ -21,6 +23,7 @@ render((
             <Route path="/files" component={allFilesPage}/>
             <Route path="/signin" component={signInPage}/>
             <Route path="/signup" component={signUpPage}/>
+
         </Route>
     </Router>
 ), document.getElementById('app'))

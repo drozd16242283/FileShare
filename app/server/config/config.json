@@ -1,9 +1,10 @@
 {
-  "port": 8888,
+  "port": 8887,
   "UploadDir": "uploads",
   "db": {
     "dbAdress": "mongodb://localhost/fileShare"
   },
+  "apiPrefix": "",
   "maxUploadFileSizeMB" : "50",
   "session": {
     "secret": "secret_key",

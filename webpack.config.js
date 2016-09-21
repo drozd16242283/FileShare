@@ -1,12 +1,16 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-module.exports = {
-    entry: path.join(__dirname, 'app/client/index.js'),
+const ENTRY_FILE_PATH = __dirname + '/app/client/index.js'
+const OUTPUT_FILE_PATH = __dirname + '/app/public/build/'
 
+const BUNDLE_FILE_NAME = 'bundle.js'
+
+module.exports = {
+    entry: ENTRY_FILE_PATH,
     output: {
-        path: path.join(__dirname, 'app/public'),
-        filename: 'bundle.js'
+        path: OUTPUT_FILE_PATH,
+        filename: BUNDLE_FILE_NAME
     },
 
     module: {

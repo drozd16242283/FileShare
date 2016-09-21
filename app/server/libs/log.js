@@ -1,10 +1,10 @@
-'use strict'
-const winston = require('winston');
-var ENV = process.env.NODE_ENV;
+import winston from 'winston'
 
-function getLogger(module) {
+const ENV = process.env.NODE_ENV
 
-    let path = module.filename.split('/').slice(-2).join('/');
+const getLogger = (module) => {
+
+    let path = module.filename.split('/').slice(-2).join('/')
 
     return new winston.Logger({
         transports: [
@@ -20,4 +20,4 @@ function getLogger(module) {
     });
 }
 
-module.exports = getLogger;
+export default getLogger

@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const api = require('./filesApi');
+import * as api from './filesApi'
+
+router.get('/', api.UploadPage);
+router.get('/files', api.findAllFiles);
 
 
-router.get('/files', api.AllFilesList);
-
-
-module.exports = router;
+export default router;

@@ -8,10 +8,12 @@ import createUploadDirectory        from './createUploadDirectory'
  *  This function is checking if upload directory exists.
  *  If not, it creates them.
  */
-export default checkIfUploadDirectoryExists = () => {
+let checkIfUploadDirectoryExists = () => {
     pathExists(currentPathToUploadDirectory).then(exists => {
         if (!exists) {
             createUploadDirectory();
         }
     })
 }
+
+export default checkIfUploadDirectoryExists

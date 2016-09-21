@@ -1,31 +1,44 @@
-const fileDBqueries = require('../models/DBqueries/fileDBqueries');
+import filesModel from '../server/models/fileModel'
 
+import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfUploadDirExists'
+
+// GET "/"
+export function UploadPage(req, res) {
+
+    ifCurrentUploadDirExists();
+
+    res.send('ok');
+};
 
 // POST "/"
-exports.UploadFile = (req, res) => {
+export function UploadFile(req, res) {
+    /*
+    let file = new File(req.file);
 
+    fileDBqueries.saveFileInfoToDB(file.getFullFileInfo());
+
+    res.redirect(`/${file.fileToken}`);
+    */
 };
 
 // GET "/file/:fileToken"
-exports.CurrentFile = (req, res) => {
+export function CurrentFile(req, res) {
 
 };
 
 // GET "/files"
-exports.AllFilesList = (req, res) => {
-    fileDBqueries.findAllFiles((err, data) => {
-        if (err) throw err;
-
-        res.json(data);
-    });
+export function findAllFiles(req, res) {
+    filesModel.find((err, filesList) => {
+        (err) ? res.json('ERROR' : err) : res.json(filesList);
+    })
 };
 
 
-exports.ListOfUserFiles = (req, res) => {
+export function ListOfUserFiles(req, res) {
 
 };
 
-//
-exports.DeleteFile = (req, res) => {
+// GET
+export function DeleteFile(req, res) {
 
 };

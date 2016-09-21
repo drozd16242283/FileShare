@@ -10,15 +10,17 @@ import MongoStore   from 'connect-mongo';
 import config       from './config';
 //const log          = require('./libs/log')(module);
 
+import api from '../api/'
 
 const app = express();
+
 
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended:true }));
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public/')));
 
 
 app.use(session({
@@ -32,7 +34,7 @@ app.use(session({
 app.use(flash());
 
 
-app.use('/api', require('./api/'));
+app.use('/api', api);
 
 
 app.get('*', function(req, res) {
@@ -41,14 +43,15 @@ app.get('*', function(req, res) {
 
 
 
+
 //require('./app/config/passport');
 
 
 // 404 error
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     res.send('404: Not Found');
     next();
-});
+});*/
 
 
 
@@ -56,3 +59,6 @@ app.use((req, res, next) => {
 app.listen(config.get('port'), function() {
     console.log('Server start at ' + config.get('port') + ' port!');
 });
+
+
+export default app

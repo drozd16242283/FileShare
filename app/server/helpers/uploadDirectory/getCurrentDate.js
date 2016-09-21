@@ -1,7 +1,7 @@
 /**
 * This function returns the currend date (dd-mm-yyyy)
 */
-export default currendDate = () => {
+const currentDate = () => {
     let   date = new Date();
 
     // day
@@ -20,3 +20,5 @@ export default currendDate = () => {
 
     return currDate;
 }
+
+export default currentDate

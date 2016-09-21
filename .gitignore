@@ -1,6 +1,7 @@
 node_modules/
+uploads/**
+.git/
 .jshintrc
 .tern-project
 error.log
-uploads/**
-.git/
+npm-debug.log

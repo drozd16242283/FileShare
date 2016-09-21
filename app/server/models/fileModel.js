@@ -1,9 +1,7 @@
-'use strict';
-const mongoose = require('../libs/mongoose');
+import mongoose from '../libs/mongoose'
 
-let Schema = mongoose.Schema;
 
-let File = new Schema({
+let FileSchema = new mongoose.Schema({
     fileName: String,
     localFileName: String,
     filePath: String,
@@ -11,7 +9,10 @@ let File = new Schema({
     comments: String,
     token: String,
     downloadLink: String,
-});
+})
 
 
-exports.File = mongoose.model('File', File);
+let FileModel = mongoose.model('File', FileSchema)
+
+
+export default FileModel
