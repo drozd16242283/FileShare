@@ -12,7 +12,7 @@ let checkIfUploadDirectoryExists = () => {
     pathExists(currentPathToUploadDirectory).then(exists => {
         if (!exists) {
             createUploadDirectory();
-        }
+        } 
     })
 }
 

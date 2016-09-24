@@ -2,6 +2,8 @@ import filesModel from '../server/models/fileModel'
 
 import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfUploadDirExists'
 
+import File from '../server/helpers/fileClass'
+
 // GET "/"
 export function UploadPage(req, res) {
 
@@ -12,13 +14,15 @@ export function UploadPage(req, res) {
 
 // POST "/"
 export function UploadFile(req, res) {
-    /*
+
     let file = new File(req.file);
 
-    fileDBqueries.saveFileInfoToDB(file.getFullFileInfo());
+    console.log(req.file);
 
-    res.redirect(`/${file.fileToken}`);
-    */
+    res.json('file': req.file);
+
+    //res.redirect(`/${file.fileToken}`);
+
 };
 
 // GET "/file/:fileToken"

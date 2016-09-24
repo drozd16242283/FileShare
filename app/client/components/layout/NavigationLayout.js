@@ -1,29 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Grid  from 'react-bootstrap/lib/Grid';
+import Nav from 'react-bootstrap/lib/Nav'
+import Navbar from 'react-bootstrap/lib/Navbar'
+import NavItem  from 'react-bootstrap/lib/NavItem';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+
+import './bootstrap.css';
+
 
 export default React.createClass({
+    propTypes: {
+        children: React.PropTypes.node
+    },
+
     render() {
         return (
-            <div className="navigation">
-                <nav className="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
-                    <div className="container">
-                        <div className="navbar-header">
-                            <a className="navbar-brand" href="/">File Share</a>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-10 col-sm-10 col-xs-6">
-                                <div className="navbar-form navbar-right">
-                                    <Link className="navLink" to="/files">Все файлы</Link>
-                                    <Link className="navLink" to="/signup">Зарегистрироватся</Link>
-                                    <Link className="navLink" to="/signin">Войти</Link>
-                                    <input className="form-control" type="text"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                {this.props.children}
+            <div>
+                <Navbar inverse>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <Link to='/'>File Share</Link>
+                        </Navbar.Brand>
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav pullRight>
+                            <LinkContainer to='/files'>
+                                <NavItem>Все файлы</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to='/signup'>
+                                <NavItem>Зарегистрироватся</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to='/signin'>
+                                <NavItem>Войти</NavItem>
+                            </LinkContainer>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+                <Grid>
+                    {this.props.children}
+                </Grid>
             </div>
-        );
+        )
     }
-});
+})

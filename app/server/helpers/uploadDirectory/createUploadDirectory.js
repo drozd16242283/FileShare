@@ -12,8 +12,8 @@ const logger = log(module)
 * For example: "uploads/07-08-2016"
 */
 let createUploadDirectory = () => {
-    mkdirp(currentPathToUploadDirectory, (err) => {
-        if (err) log.error(err)
+    mkdirp(currentPathToUploadDirectory, (err, success) => {
+        if (err) logger.error(err)
     })
 }
 

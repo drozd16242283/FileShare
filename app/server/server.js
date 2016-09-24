@@ -1,19 +1,21 @@
-import express      from 'express';
-import path         from 'path';
-import bodyParser   from 'body-parser';
-import cookieParser from 'cookie-parser';
-import flash        from 'express-flash';
-import session      from 'express-session';
-import MongoStore   from 'connect-mongo';
+import express      from 'express'
+import path         from 'path'
+import bodyParser   from 'body-parser'
+import cookieParser from 'cookie-parser'
+import flash        from 'express-flash'
+import session      from 'express-session'
+import MongoStore   from 'connect-mongo'
 
 // require config
-import config       from './config';
+import config       from './config'
 //const log          = require('./libs/log')(module);
 
 import api from '../api/'
 
+
 const app = express();
 
+const PATH_TO_INDEX_FILE = path.resolve(__dirname, '../public', 'index.html')
 
 
 app.use(cookieParser());
@@ -34,13 +36,13 @@ app.use(session({
 app.use(flash());
 
 
+
 app.use('/api', api);
 
 
 app.get('*', function(req, res) {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    res.sendFile(PATH_TO_INDEX_FILE);
 });
-
 
 
 

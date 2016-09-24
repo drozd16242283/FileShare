@@ -1,5 +1,5 @@
 {
-  "port": 8887,
+  "port": 7777,
   "UploadDir": "uploads",
   "db": {
     "dbAdress": "mongodb://localhost/fileShare"

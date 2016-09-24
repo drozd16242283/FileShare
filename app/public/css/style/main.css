@@ -3,10 +3,7 @@
     background-color: #3097D1;
     border-color: #2a88bd;
 }
-.navbar-inverse {
-    background-color: #0066CC;
-    border-color: #1C73A5;
-}
+
 .formInput {
   position: absolute;
   width: 300px;
@@ -23,16 +20,12 @@
 .footer {
   position: absolute;
   bottom: 0;
-  height: 20px;
+  height: 25px;
   background: #f0f0f0;
   width: 100%;
 }
 .footer-text {
   text-align: center;
-}
-
-.navLink {
-  margin: 8px;
 }
 
 .signin {

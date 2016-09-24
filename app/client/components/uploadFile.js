@@ -4,20 +4,12 @@ import Navigation from './layout/NavigationLayout'
 
 
 export default React.createClass({
-
-
-
-
-    handleSubmit() {
-        alert('hello');
-    },
-
     render() {
         return (
             <div>
                 <div className="formInput">
-                    <form action="/"
-                          encType="multipart/form-data"
+                    <form encType="multipart/form-data"
+                          action="/api/fileUpload"
                           method="post"
                           onSubmit={this.handleSubmit}
                           className="form-horizontal">
