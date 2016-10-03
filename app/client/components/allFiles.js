@@ -4,19 +4,40 @@ import api from '../api'
 
 
 export default React.createClass({
+    getInitialState() {
+        return {
+            filesName: []
+        }
+    },
+
+    componentDidMount() {
+        const that = this;
+        api.allFilesListPromise()
+            .then(file => {
+                console.log(file)
+                that.setState({
+                    filesName: file
+                })
+            })
+    },
+
     render() {
-        var filesList = []
-        api.allFilesList(file => {
-            file.forEach(f => filesList.push(f))
-        })
+        var fileNames = this.state.filesName
+            .map(names => {
+                //console.log(names.length)
+
+                return names
+            })
+
         return (
-            <div>
-                <h1>Files Page</h1>
-                <button type='submit' onClick={this.handle}>test</button>
-                <h2>{filesList}</h2>
-            </div>
+                <ul>
+                    {
+                        fileNames.map(name =>
+                            <li>{name}<br /></li>
+                        )
+                    }
+                </ul>
         );
     }
-
 
 })
