@@ -1,30 +1,25 @@
 import Promise from 'bluebird'
 import xhr from 'xhr'
 
-import handleFilesName from '../server/helpers/clientAPI/handleFilesName'
+import handleFilesList from '../server/helpers/clientAPI/handleFilesList'
 
 const API_PREFIX = 'http://localhost:7777/api'
 
 export default {
-    allFilesListPromise() {
+    allFilesList() {
         return new Promise((resolve, reject) => {
             xhr(`${API_PREFIX}/files`, (err, resp) => {
                 if (err) reject(err)
 
-                /*let filesData = JSON.parse(resp.body)
-                    .map(file => {
-                        return [
-                            file.fileName,
-                            file.fileSize,
-                            file.downloadLink
-                        ]
-                    })*/
+                let filesList = handleFilesList(resp)
 
-                let filesName = handleFilesName(resp);
-
-
-                resolve(filesName)
+                resolve(filesList)
             })
         })
+    },
+
+    currentFileData(fileToken) {
+        return fetch(`/api/${fileToken}`)
+            .then(resp => resp.json())
     }
 }

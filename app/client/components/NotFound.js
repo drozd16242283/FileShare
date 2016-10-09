@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default React.createClass({
+const NotFoundPage = React.createClass({
     render() {
         return (
             <div>
@@ -9,3 +9,5 @@ export default React.createClass({
         );
     }
 })
+
+export default NotFoundPage

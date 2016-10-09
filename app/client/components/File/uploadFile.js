@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Navigation from './layout/NavigationLayout'
+import Navigation from '../layout/NavigationLayout'
 
 
-export default React.createClass({
+const UploadFilePage = React.createClass({
     render() {
         return (
             <div>
@@ -22,3 +22,5 @@ export default React.createClass({
         );
     }
 })
+
+export default UploadFilePage

@@ -61,27 +61,27 @@
 	
 	var _NavigationLayout2 = _interopRequireDefault(_NavigationLayout);
 	
-	var _uploadFile = __webpack_require__(/*! ./components/uploadFile */ 366);
+	var _uploadFile = __webpack_require__(/*! ./components/File/uploadFile */ 384);
 	
 	var _uploadFile2 = _interopRequireDefault(_uploadFile);
 	
-	var _currentFile = __webpack_require__(/*! ./components/currentFile */ 367);
+	var _currentFile = __webpack_require__(/*! ./components/File/currentFile */ 385);
 	
 	var _currentFile2 = _interopRequireDefault(_currentFile);
 	
-	var _allFiles = __webpack_require__(/*! ./components/allFiles */ 368);
+	var _allFilesList = __webpack_require__(/*! ./components/File/allFilesList */ 388);
 	
-	var _allFiles2 = _interopRequireDefault(_allFiles);
+	var _allFilesList2 = _interopRequireDefault(_allFilesList);
 	
-	var _signin = __webpack_require__(/*! ./components/Authentication/signin */ 369);
+	var _signin = __webpack_require__(/*! ./components/Authentication/signin */ 381);
 	
 	var _signin2 = _interopRequireDefault(_signin);
 	
-	var _signup = __webpack_require__(/*! ./components/Authentication/signup */ 370);
+	var _signup = __webpack_require__(/*! ./components/Authentication/signup */ 382);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 371);
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 383);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -94,10 +94,11 @@
 	        _reactRouter.Route,
 	        { component: _NavigationLayout2.default, path: '/' },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _uploadFile2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { component: _currentFile2.default, path: 'file/:fileId' }),
-	        _react2.default.createElement(_reactRouter.Route, { component: _allFiles2.default, path: 'files' }),
+	        _react2.default.createElement(_reactRouter.Route, { component: _allFilesList2.default, path: 'files' }),
 	        _react2.default.createElement(_reactRouter.Route, { component: _signin2.default, path: 'signin' }),
-	        _react2.default.createElement(_reactRouter.Route, { component: _signup2.default, path: 'signup' })
+	        _react2.default.createElement(_reactRouter.Route, { component: _signup2.default, path: 'signup' }),
+	        _react2.default.createElement(_reactRouter.Route, { component: _currentFile2.default, path: ':fileToken' }),
+	        _react2.default.createElement(_reactRouter.Route, { component: _NotFound2.default, path: '*' })
 	    )
 	), document.getElementById('app'));
 
@@ -27869,7 +27870,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _react2.default.createClass({
+	// importing some of react-bootstrap lib. Let's check it out!
+	var NavigationLayout = _react2.default.createClass({
 	    displayName: 'NavigationLayout',
 	
 	    propTypes: {
@@ -27940,6 +27942,8 @@
 	        );
 	    }
 	});
+	
+	exports.default = NavigationLayout;
 
 /***/ },
 /* 236 */
@@ -34020,254 +34024,11 @@
 
 
 /***/ },
-/* 366 */
-/*!*********************************************!*\
-  !*** ./app/client/components/uploadFile.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _NavigationLayout = __webpack_require__(/*! ./layout/NavigationLayout */ 235);
-	
-	var _NavigationLayout2 = _interopRequireDefault(_NavigationLayout);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _react2.default.createClass({
-	    displayName: 'uploadFile',
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'formInput' },
-	                _react2.default.createElement(
-	                    'form',
-	                    { encType: 'multipart/form-data',
-	                        action: '/api/fileUpload',
-	                        method: 'post',
-	                        onSubmit: this.handleSubmit,
-	                        className: 'form-horizontal' },
-	                    _react2.default.createElement('input', { type: 'file', className: 'btn btn-primary upload-btn', name: 'file' }),
-	                    _react2.default.createElement('button', { className: 'btn', type: 'submit', value: 'Upload File', name: 'submit' }),
-	                    _react2.default.createElement(
-	                        'label',
-	                        null,
-	                        'Размер файла не более 50 Мб'
-	                    )
-	                )
-	            )
-	        );
-	    }
-	});
-
-/***/ },
-/* 367 */
-/*!**********************************************!*\
-  !*** ./app/client/components/currentFile.js ***!
-  \**********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _react2.default.createClass({
-	    displayName: 'currentFile',
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'h1',
-	                null,
-	                'File Page'
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	                'h1',
-	                null,
-	                this.props.params
-	            )
-	        );
-	    }
-	});
-
-/***/ },
-/* 368 */
-/*!*******************************************!*\
-  !*** ./app/client/components/allFiles.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _api = __webpack_require__(/*! ../api */ 384);
-	
-	var _api2 = _interopRequireDefault(_api);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _react2.default.createClass({
-	    displayName: 'allFiles',
-	    getInitialState: function getInitialState() {
-	        return {
-	            filesName: []
-	        };
-	    },
-	    componentDidMount: function componentDidMount() {
-	        var that = this;
-	        _api2.default.allFilesListPromise().then(function (file) {
-	            console.log(file);
-	            that.setState({
-	                filesName: file
-	            });
-	        });
-	    },
-	    render: function render() {
-	        var fileNames = this.state.filesName.map(function (names) {
-	            //console.log(names.length)
-	
-	            return names;
-	        });
-	
-	        return _react2.default.createElement(
-	            'ul',
-	            null,
-	            fileNames.map(function (name) {
-	                return _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    name,
-	                    _react2.default.createElement('br', null)
-	                );
-	            })
-	        );
-	    }
-	});
-
-/***/ },
-/* 369 */
-/*!********************************************************!*\
-  !*** ./app/client/components/Authentication/signin.js ***!
-  \********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _react2.default.createClass({
-	    displayName: "signin",
-	    render: function render() {
-	        return _react2.default.createElement(
-	            "div",
-	            { className: "container signin" },
-	            _react2.default.createElement(
-	                "div",
-	                { className: "col-sm-6 col-sm-offset-3" },
-	                _react2.default.createElement(
-	                    "h1",
-	                    null,
-	                    _react2.default.createElement("span", { className: "fa fa-sign-in" }),
-	                    "Войти"
-	                )
-	            )
-	        );
-	    }
-	});
-
-/***/ },
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
 /* 370 */
-/*!********************************************************!*\
-  !*** ./app/client/components/Authentication/signup.js ***!
-  \********************************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 371 */
-/*!*******************************************!*\
-  !*** ./app/client/components/NotFound.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _react2.default.createClass({
-	    displayName: 'NotFound',
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'h1',
-	                null,
-	                '404: Not Found'
-	            )
-	        );
-	    }
-	});
-
-/***/ },
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */
 /*!***************************!*\
   !*** ./app/client/api.js ***!
   \***************************/
@@ -34279,47 +34040,43 @@
 	    value: true
 	});
 	
-	var _bluebird = __webpack_require__(/*! bluebird */ 385);
+	var _bluebird = __webpack_require__(/*! bluebird */ 371);
 	
 	var _bluebird2 = _interopRequireDefault(_bluebird);
 	
-	var _xhr = __webpack_require__(/*! xhr */ 387);
+	var _xhr = __webpack_require__(/*! xhr */ 373);
 	
 	var _xhr2 = _interopRequireDefault(_xhr);
 	
-	var _handleFilesName = __webpack_require__(/*! ../server/helpers/clientAPI/handleFilesName */ 394);
+	var _handleFilesList = __webpack_require__(/*! ../server/helpers/clientAPI/handleFilesList */ 380);
 	
-	var _handleFilesName2 = _interopRequireDefault(_handleFilesName);
+	var _handleFilesList2 = _interopRequireDefault(_handleFilesList);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var API_PREFIX = 'http://localhost:7777/api';
 	
 	exports.default = {
-	    allFilesListPromise: function allFilesListPromise() {
+	    allFilesList: function allFilesList() {
 	        return new _bluebird2.default(function (resolve, reject) {
 	            (0, _xhr2.default)(API_PREFIX + '/files', function (err, resp) {
 	                if (err) reject(err);
 	
-	                /*let filesData = JSON.parse(resp.body)
-	                    .map(file => {
-	                        return [
-	                            file.fileName,
-	                            file.fileSize,
-	                            file.downloadLink
-	                        ]
-	                    })*/
+	                var filesList = (0, _handleFilesList2.default)(resp);
 	
-	                var filesName = (0, _handleFilesName2.default)(resp);
-	
-	                resolve(filesName);
+	                resolve(filesList);
 	            });
+	        });
+	    },
+	    currentFileData: function currentFileData(fileToken) {
+	        return fetch('/api/' + fileToken).then(function (resp) {
+	            return resp.json();
 	        });
 	    }
 	};
 
 /***/ },
-/* 385 */
+/* 371 */
 /*!*******************************************!*\
   !*** ./~/bluebird/js/browser/bluebird.js ***!
   \*******************************************/
@@ -39923,10 +39680,10 @@
 	
 	},{"./es5":13}]},{},[4])(4)
 	});                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3), (function() { return this; }()), __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 386).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3), (function() { return this; }()), __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 372).setImmediate))
 
 /***/ },
-/* 386 */
+/* 372 */
 /*!*****************************************************************!*\
   !*** (webpack)/~/node-libs-browser/~/timers-browserify/main.js ***!
   \*****************************************************************/
@@ -40008,20 +39765,20 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 386).setImmediate, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 386).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 372).setImmediate, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/timers-browserify/main.js */ 372).clearImmediate))
 
 /***/ },
-/* 387 */
+/* 373 */
 /*!************************!*\
   !*** ./~/xhr/index.js ***!
   \************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var window = __webpack_require__(/*! global/window */ 388)
-	var isFunction = __webpack_require__(/*! is-function */ 389)
-	var parseHeaders = __webpack_require__(/*! parse-headers */ 390)
-	var xtend = __webpack_require__(/*! xtend */ 393)
+	var window = __webpack_require__(/*! global/window */ 374)
+	var isFunction = __webpack_require__(/*! is-function */ 375)
+	var parseHeaders = __webpack_require__(/*! parse-headers */ 376)
+	var xtend = __webpack_require__(/*! xtend */ 379)
 	
 	module.exports = createXHR
 	createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
@@ -40255,7 +40012,7 @@
 
 
 /***/ },
-/* 388 */
+/* 374 */
 /*!****************************!*\
   !*** ./~/global/window.js ***!
   \****************************/
@@ -40274,7 +40031,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 389 */
+/* 375 */
 /*!********************************!*\
   !*** ./~/is-function/index.js ***!
   \********************************/
@@ -40298,14 +40055,14 @@
 
 
 /***/ },
-/* 390 */
+/* 376 */
 /*!******************************************!*\
   !*** ./~/parse-headers/parse-headers.js ***!
   \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var trim = __webpack_require__(/*! trim */ 391)
-	  , forEach = __webpack_require__(/*! for-each */ 392)
+	var trim = __webpack_require__(/*! trim */ 377)
+	  , forEach = __webpack_require__(/*! for-each */ 378)
 	  , isArray = function(arg) {
 	      return Object.prototype.toString.call(arg) === '[object Array]';
 	    }
@@ -40337,7 +40094,7 @@
 	}
 
 /***/ },
-/* 391 */
+/* 377 */
 /*!*************************!*\
   !*** ./~/trim/index.js ***!
   \*************************/
@@ -40360,13 +40117,13 @@
 
 
 /***/ },
-/* 392 */
+/* 378 */
 /*!*****************************!*\
   !*** ./~/for-each/index.js ***!
   \*****************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(/*! is-function */ 389)
+	var isFunction = __webpack_require__(/*! is-function */ 375)
 	
 	module.exports = forEach
 	
@@ -40415,7 +40172,7 @@
 
 
 /***/ },
-/* 393 */
+/* 379 */
 /*!******************************!*\
   !*** ./~/xtend/immutable.js ***!
   \******************************/
@@ -40443,38 +40200,448 @@
 
 
 /***/ },
-/* 394 */
+/* 380 */
 /*!*********************************************************!*\
-  !*** ./app/server/helpers/clientAPI/handleFilesName.js ***!
+  !*** ./app/server/helpers/clientAPI/handleFilesList.js ***!
   \*********************************************************/
 /***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var handleFilesList = function handleFilesList(response) {
+	    var parsedJSON = JSON.parse(response.body);
+	
+	    var cutFileNameString = parsedJSON.map(function (_ref) {
+	        var fileName = _ref.fileName;
+	
+	        var FILE_NAME_LENGTH = fileName.length;
+	
+	        if (FILE_NAME_LENGTH > 25) {
+	            var begin_str = fileName.slice(0, 20);
+	            var indexOfEndStr = FILE_NAME_LENGTH - 10;
+	            var end_str = fileName.slice(indexOfEndStr, FILE_NAME_LENGTH);
+	            return begin_str + '...' + end_str;
+	        } else {
+	            return fileName;
+	        }
+	    });
+	
+	    var filesSize = parsedJSON.map(function (f) {
+	        return f.fileSize;
+	    });
+	    var filesToken = parsedJSON.map(function (f) {
+	        return f.token;
+	    });
+	
+	    return {
+	        'fileName': cutFileNameString,
+	        'fileSize': filesSize,
+	        'fileToken': filesToken
+	    };
+	};
+	
+	exports.default = handleFilesList;
+
+/***/ },
+/* 381 */
+/*!********************************************************!*\
+  !*** ./app/client/components/Authentication/signin.js ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var handleFilesName = function handleFilesName(response) {
-	    var filesName = JSON.parse(response.body).map(function (_ref) {
-	        var fileName = _ref.fileName;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SignInPage = _react2.default.createClass({
+	    displayName: "SignInPage",
+	    render: function render() {
+	        return _react2.default.createElement(
+	            "div",
+	            { className: "container signin" },
+	            _react2.default.createElement(
+	                "div",
+	                { className: "col-sm-6 col-sm-offset-3" },
+	                _react2.default.createElement(
+	                    "h1",
+	                    null,
+	                    "Войти"
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	exports.default = SignInPage;
+
+/***/ },
+/* 382 */
+/*!********************************************************!*\
+  !*** ./app/client/components/Authentication/signup.js ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SignUpPage = _react2.default.createClass({
+	    displayName: 'SignUpPage',
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'h1',
+	                null,
+	                'Регистрация'
+	            )
+	        );
+	    }
+	});
+	
+	exports.default = SignUpPage;
+
+/***/ },
+/* 383 */
+/*!*******************************************!*\
+  !*** ./app/client/components/NotFound.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NotFoundPage = _react2.default.createClass({
+	    displayName: 'NotFoundPage',
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'h1',
+	                null,
+	                '404: Not Found'
+	            )
+	        );
+	    }
+	});
+	
+	exports.default = NotFoundPage;
+
+/***/ },
+/* 384 */
+/*!**************************************************!*\
+  !*** ./app/client/components/File/uploadFile.js ***!
+  \**************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _NavigationLayout = __webpack_require__(/*! ../layout/NavigationLayout */ 235);
+	
+	var _NavigationLayout2 = _interopRequireDefault(_NavigationLayout);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UploadFilePage = _react2.default.createClass({
+	    displayName: 'UploadFilePage',
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'formInput' },
+	                _react2.default.createElement(
+	                    'form',
+	                    { encType: 'multipart/form-data',
+	                        action: '/api/fileUpload',
+	                        method: 'post',
+	                        onSubmit: this.handleSubmit,
+	                        className: 'form-horizontal' },
+	                    _react2.default.createElement('input', { type: 'file', className: 'btn btn-primary upload-btn', name: 'file' }),
+	                    _react2.default.createElement('button', { className: 'btn', type: 'submit', value: 'Upload File', name: 'submit' }),
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Размер файла не более 50 Мб'
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	exports.default = UploadFilePage;
+
+/***/ },
+/* 385 */
+/*!***************************************************!*\
+  !*** ./app/client/components/File/currentFile.js ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _api = __webpack_require__(/*! ../../api */ 370);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CurrentFile = _react2.default.createClass({
+	    displayName: 'CurrentFile',
+	    getInitialState: function getInitialState() {
+	        return {
+	            fileInfo: {}
+	        };
+	    },
+	    componentDidMount: function componentDidMount() {
+	        var that = this;
+	        var fileToken = this.props.params.fileToken;
+	        _api2.default.currentFileData(fileToken).then(function (fileInfo) {
+	            that.setState({
+	                fileInfo: fileInfo
+	            });
+	        });
+	    },
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'container' },
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-5 col-md-4 col-lg-3' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'panel panel-default panel-profile' },
+	                    _react2.default.createElement('div', { className: 'panel-heading panel-profile-heading' }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'panel-body text-center' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'avatar-block center-block' },
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'User Name'
+	                            )
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-7 col-md-8 col-lg-6' },
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'ul',
+	                        { className: 'media-list media-list-users list-group' },
+	                        _react2.default.createElement(
+	                            'li',
+	                            { className: 'list-group-item' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'file-show-title' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    { className: 'lead' },
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        { className: 'title-text' },
+	                                        this.state.fileInfo.fileName
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	exports.default = CurrentFile;
+
+/***/ },
+/* 386 */,
+/* 387 */
+/*!********************************************!*\
+  !*** ./app/client/components/File/file.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Link = __webpack_require__(/*! react-router/lib/Link */ 212);
+	
+	var _Link2 = _interopRequireDefault(_Link);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var FileComponent = _react2.default.createClass({
+	    displayName: 'FileComponent',
+	
+	    propTypes: {
+	        name: _react2.default.PropTypes.array,
+	        size: _react2.default.PropTypes.array,
+	        token: _react2.default.PropTypes.array
+	    },
+	
+	    render: function render() {
+	        var _props = this.props;
+	        var name = _props.name;
+	        var size = _props.size;
+	        var token = _props.token;
 	
 	
-	        var FILE_NAME_LENGTH = fileName.length;
+	        return _react2.default.createElement(
+	            'ul',
+	            null,
+	            token.map(function (t, i) {
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                        _Link2.default,
+	                        { to: t },
+	                        name[i]
+	                    ),
+	                    '  ',
+	                    size[i]
+	                );
+	            })
+	        );
+	    }
+	});
 	
-	        if (FILE_NAME_LENGTH > 20) {
-	            var begin_str = fileName.slice(0, 20);
-	            var indexOfEndStr = FILE_NAME_LENGTH - 10;
-	            var end_str = fileName.slice(indexOfEndStr, FILE_NAME_LENGTH);
-	            return begin_str + "..." + end_str;
-	        } else {
-	            return fileName;
-	        }
-	    });
+	exports.default = FileComponent;
+
+/***/ },
+/* 388 */
+/*!****************************************************!*\
+  !*** ./app/client/components/File/allFilesList.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	
-	    return filesName;
-	};
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	
-	exports.default = handleFilesName;
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _file = __webpack_require__(/*! ./file */ 387);
+	
+	var _file2 = _interopRequireDefault(_file);
+	
+	var _api = __webpack_require__(/*! ../../api */ 370);
+	
+	var _api2 = _interopRequireDefault(_api);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	//import {fetch} from 'whatwg-fetch'
+	
+	var AllFilesList = _react2.default.createClass({
+	    displayName: 'AllFilesList',
+	    getInitialState: function getInitialState() {
+	        return {
+	            fileName: [],
+	            fileSize: [],
+	            fileToken: []
+	        };
+	    },
+	
+	
+	    // Fetch json data from API
+	    componentDidMount: function componentDidMount() {
+	        var that = this;
+	        _api2.default.allFilesList().then(function (file) {
+	            that.setState({
+	                fileName: file.fileName,
+	                fileSize: file.fileSize,
+	                fileToken: file.fileToken
+	            });
+	        });
+	    },
+	    render: function render() {
+	        var _state = this.state;
+	        var fileName = _state.fileName;
+	        var fileSize = _state.fileSize;
+	        var fileToken = _state.fileToken;
+	
+	
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_file2.default, { name: fileName,
+	                size: fileSize,
+	                token: fileToken })
+	        );
+	    }
+	});
+	
+	exports.default = AllFilesList;
 
 /***/ }
 /******/ ]);

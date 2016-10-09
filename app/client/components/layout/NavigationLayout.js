@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
+
+// importing some of react-bootstrap lib. Let's check it out!
 import Grid  from 'react-bootstrap/lib/Grid';
 import Nav from 'react-bootstrap/lib/Nav'
 import Navbar from 'react-bootstrap/lib/Navbar'
@@ -9,7 +11,7 @@ import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 import './bootstrap.css';
 
 
-export default React.createClass({
+const NavigationLayout = React.createClass({
     propTypes: {
         children: React.PropTypes.node
     },
@@ -44,3 +46,5 @@ export default React.createClass({
         )
     }
 })
+
+export default NavigationLayout
