@@ -17,8 +17,8 @@ class File {
             localFileName: this.localFileName,
             filePath:      this.filePath,
             fileSize:      this.fileSize,
-            comments:      this.fileComment,
-            token:         this.fileToken,
+            fileComment:   this.fileComment,
+            fileToken:     this.fileToken,
             downloadLink:  this.createDownloadLink()
         };
     }

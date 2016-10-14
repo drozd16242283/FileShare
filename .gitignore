@@ -1,6 +1,7 @@
 node_modules/
 uploads/**
 ssh/
+.env
 .git/
 .jshintrc
 .tern-project

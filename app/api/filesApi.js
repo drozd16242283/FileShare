@@ -4,26 +4,30 @@ import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfU
 
 import File from '../server/helpers/fileClass'
 
+import multer from '../server/config/multer'
+
 
 // GET "/"
 export function UploadPage(req, res) {
+    ifCurrentUploadDirExists()
 
-    ifCurrentUploadDirExists();
-
-    res.send('ok');
+    res.sendStatus(200)
 };
 
 // POST "/"
 export function UploadFile(req, res) {
+    multer(req,res, (err) => {
+        if (err) res.end("Ошибка загрузки файла!")
 
-    let file = new File(req.file);
+        const file = new File(req.file)
 
-    console.log(req.file);
+        let newFile = new filesModel(file.getFullFileInfo())
+        newFile.save(err => {
+            if (err) res.end("Ошибка базы данных")
 
-    res.json('file': req.file);
-
-    //res.redirect(`/${file.fileToken}`);
-
+            res.redirect(`http://localhost:7777/${file.fileToken}`)
+        })
+    })
 };
 
 // GET "/:fileToken"
@@ -34,13 +38,9 @@ export function CurrentFile(req, res) {
         (err, file) => {
             if (err) res.send({ error: "Server Error" })
 
+            let response = (file !== null) ? file : 'Файл не найден.'
 
-            if (file !== null) {
-                res.json(file)
-            } else {
-                res.statusCode = 404
-                res.send("Файл не найден.")
-            }
+            res.json(response)
     })
 };
 

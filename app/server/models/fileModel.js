@@ -6,8 +6,8 @@ let FileSchema = new mongoose.Schema({
     localFileName: String,
     filePath: String,
     fileSize: String,
-    comments: String,
-    token: String,
+    fileComment: String,
+    fileToken: String,
     downloadLink: String,
 })
 

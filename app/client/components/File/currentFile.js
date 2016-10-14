@@ -1,22 +1,22 @@
 import React from 'react'
 
-
 import api from '../../api'
 
 const CurrentFile = React.createClass({
     getInitialState() {
         return {
-            fileInfo: {}
+            fileData: {}
         }
     },
 
     componentDidMount() {
         const that = this
+
         const fileToken = this.props.params.fileToken
         api.currentFileData(fileToken)
-            .then(fileInfo => {
+            .then(fileData => {
                 that.setState({
-                    fileInfo: fileInfo
+                    fileData: fileData
                 })
             })
     },
@@ -39,9 +39,7 @@ const CurrentFile = React.createClass({
                         <ul className="media-list media-list-users list-group">
                             <li className="list-group-item">
                                 <div className="file-show-title">
-                                    <p className="lead">
-                                        <span className="title-text">{this.state.fileInfo.fileName}</span>
-                                    </p>
+                                    <p className="lead">{this.state.fileData.fileName}</p>
                                 </div>
                             </li>
                         </ul>

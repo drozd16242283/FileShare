@@ -1,6 +1,8 @@
-require('babel-core/register');
-require('babel-polyfill');
+require('babel-core/register')
+require('babel-polyfill')
 
-var app = require('./app/server/server');
+require('dotenv').config()
 
-module.exports = app;
+var app = require('./app/server/server')
+
+module.exports = app

@@ -1,15 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-// importing some of react-bootstrap lib. Let's check it out!
-import Grid  from 'react-bootstrap/lib/Grid';
-import Nav from 'react-bootstrap/lib/Nav'
-import Navbar from 'react-bootstrap/lib/Navbar'
-import NavItem  from 'react-bootstrap/lib/NavItem';
-import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
-
-import './bootstrap.css';
-
+import './bootstrap.css'
 
 const NavigationLayout = React.createClass({
     propTypes: {
@@ -19,29 +11,21 @@ const NavigationLayout = React.createClass({
     render() {
         return (
             <div>
-                <Navbar inverse>
-                    <Navbar.Header>
-                        <Navbar.Brand>
-                            <Link to='/'>File Share</Link>
-                        </Navbar.Brand>
-                    </Navbar.Header>
-                    <Navbar.Collapse>
-                        <Nav pullRight>
-                            <LinkContainer to='/files'>
-                                <NavItem>Все файлы</NavItem>
-                            </LinkContainer>
-                            <LinkContainer to='/signup'>
-                                <NavItem>Зарегистрироватся</NavItem>
-                            </LinkContainer>
-                            <LinkContainer to='/signin'>
-                                <NavItem>Войти</NavItem>
-                            </LinkContainer>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-                <Grid>
-                    {this.props.children}
-                </Grid>
+                <nav className="navbar navbar-inverse">
+                    <div className="container">
+                        <div className="navbar-header">
+                            <Link className="navbar-brand" to="/">File Share</Link>
+                        </div>
+                        <div className="navbar-collapse">
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><Link to="/files">Все файлы</Link></li>
+                                <li><Link to="/signup">Зарегистрироваться</Link></li>
+                                <li><Link to="/signin">Войти</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                {this.props.children}
             </div>
         )
     }

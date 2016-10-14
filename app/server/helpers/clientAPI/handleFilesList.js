@@ -1,6 +1,4 @@
-const handleFilesList = (response) => {
-    const parsedJSON = JSON.parse(response.body)
-
+const handleFilesList = (parsedJSON) => {
     let cutFileNameString = parsedJSON.map(({fileName}) => {
             const FILE_NAME_LENGTH = fileName.length
 
@@ -14,15 +12,17 @@ const handleFilesList = (response) => {
             }
         })
 
-    let filesSize  = parsedJSON.map(f => f.fileSize)
-    let filesToken = parsedJSON.map(f => f.token)
+    let fileSize  = parsedJSON.map(f => f.fileSize)
+    let fileToken = parsedJSON.map(f => f.token)
+
 
 
     return {
-        'fileName': cutFileNameString,
-        'fileSize': filesSize,
-        'fileToken': filesToken
+        name: cutFileNameString,
+        size: fileSize,
+        token: fileToken
     }
+
 }
 
 export default handleFilesList

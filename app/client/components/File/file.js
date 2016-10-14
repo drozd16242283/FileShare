@@ -16,7 +16,7 @@ const FileComponent = React.createClass({
             <ul>
                 {
                     token.map((t, i) =>
-                        <li key={i}>
+                        <li className="files" key={i}>
                             <Link to={t}>
                                 {name[i]}
                             </Link>

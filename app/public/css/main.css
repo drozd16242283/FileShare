@@ -13,6 +13,7 @@
   left: 50%;
   margin: -100px 0 0 -150px;
 }
+
 .navigation {
   color: #0066CC;
 }
@@ -24,10 +25,35 @@
   background: #f0f0f0;
   width: 100%;
 }
+
 .footer-text {
   text-align: center;
 }
 
 .signin {
   margin: 100px 0 0 -150px;
+}
+
+.files {
+  margin: 10px 10px 10px 0;
+}
+
+.filesList {
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+.fileSearchForm {
+  margin-top: 25px;
+}
+
+input[type=search] {
+  width: 150px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+input[type=search]:focus {
+  width: 200px;
 }
