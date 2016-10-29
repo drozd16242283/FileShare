@@ -33,6 +33,7 @@ app.use(session({
 }))
 
 
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -50,9 +51,7 @@ app.get('*', (req, res) => {
 })
 
 
-
 //require('./app/config/passport');
-
 
 
 // Starting the server

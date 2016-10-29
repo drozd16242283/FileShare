@@ -1,10 +1,12 @@
 import React from 'react'
 
-import Navigation from '../layout/NavigationLayout'
+import './uploadFile.css'
+
 
 (function() {
     fetch('/api/')
 })()
+
 
 const UploadFilePage = React.createClass({
 
@@ -28,7 +30,7 @@ const UploadFilePage = React.createClass({
                           action="/api/fileUpload"
                           method="post"
                           className="form-horizontal">
-                        <input type="file" className="btn btn-primary upload-btn" name="file"/>
+                        <input type="file" className="btn btn-primary upload-btn" name="file" required/>
                         <button className="btn"
                                 type="submit"
                                 value="Upload File"

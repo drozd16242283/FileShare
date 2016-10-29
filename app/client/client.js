@@ -2,23 +2,22 @@ import React from 'react'
 import { render } from 'react-dom'
 import { browserHistory, Router, Route, IndexRoute  } from 'react-router'
 
+import AppNavigation from './components/AppNavigation/'
 
-import NavigationLayout from './components/layout/NavigationLayout'
+import UploadFilesPage from './components/File/UploadFiles'
+import currentFilePage from './components/File/CurrentFile'
+import allFilesPage    from './components/File/AllFilesList'
 
-import uploadFilePage  from './components/File/uploadFile'
-import currentFilePage from './components/File/currentFile'
-import allFilesPage    from './components/File/allFilesList'
-
-import signInPage from './components/Authentication/signin'
-import signUpPage from './components/Authentication/signup'
+import signInPage from './components/Authentication/SignIn'
+import signUpPage from './components/Authentication/SignUp'
 
 import NotFoundPage from './components/NotFound'
 
 
 render((
     <Router history={browserHistory}>
-        <Route component={NavigationLayout} path='/'>
-            <IndexRoute component={uploadFilePage} />
+        <Route component={AppNavigation} path='/'>
+            <IndexRoute component={UploadFilesPage} />
             <Route component={allFilesPage} path='files' />
             <Route component={signInPage} path='signin' />
             <Route component={signUpPage} path='signup' />

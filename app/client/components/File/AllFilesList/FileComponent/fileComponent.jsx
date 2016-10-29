@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'react-router/lib/Link'
 
+import './fileComponent.css'
 
 const FileComponent = React.createClass({
     propTypes: {

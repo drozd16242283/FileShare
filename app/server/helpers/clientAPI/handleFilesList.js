@@ -13,7 +13,7 @@ const handleFilesList = (parsedJSON) => {
         })
 
     let fileSize  = parsedJSON.map(f => f.fileSize)
-    let fileToken = parsedJSON.map(f => f.token)
+    let fileToken = parsedJSON.map(f => f.fileToken)
 
 
 

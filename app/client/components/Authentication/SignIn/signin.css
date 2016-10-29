@@ -1,0 +1,53 @@
+
+.loginForm ul {
+  width: 750px;
+  list-style-type: none;
+  list-style-position: outside;
+  margin: 0px;
+  padding: 0px;
+}
+
+.loginForm li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.loginForm li:first-child, .loginForm li:last-child {
+  border-bottom: 1px solid #777;
+}
+
+.loginForm h2 {
+  margin: 0;
+  display: inline;
+}
+
+.loginForm label {
+  width: 150px;
+  margin-top: 3px;
+  display: inline-block;
+  float: left;
+  padding: 3px;
+}
+
+.loginForm input {
+  height: 35px;
+  width: 250px;
+  padding: 5px 8px;
+}
+
+.loginForm button {
+  margin-left: 235px;
+  border-radius: 4px;
+}
+
+.loginForm input {
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+}
+.loginForm input:focus {
+    background: #fff;
+    border:1px solid #555;
+    box-shadow: 0 0 3px #aaa;
+}
