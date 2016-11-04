@@ -5,7 +5,7 @@ import currentDate from './getCurrentDate'
 
 const uploadDir = `${config.get('UploadDir')}/${currentDate()}`
 
-const currentUploadDirectory = path.join(__dirname, `../../../../${uploadDir}`);
+const currentUploadDirectory = path.join(__dirname, `../../../public/${uploadDir}`)
 
 
 export default currentUploadDirectory

@@ -1,6 +1,9 @@
 import React from 'react'
 
+import path from 'path'
+
 import api from '../../../api'
+
 
 import './currentFile.css'
 
@@ -23,6 +26,10 @@ const CurrentFile = React.createClass({
     },
 
     render() {
+        const imgDest  = this.state.fileData.fileDestination
+        const fileName = this.state.fileData.localFileName
+        const isImage  = this.state.fileData.isImage ? <div><img src={`${imgDest}/${fileName}`}></img></div> : <p>fal</p>
+
         return(
             <div className="container-fluid fileInfo">
                 <div className="row">
@@ -35,7 +42,7 @@ const CurrentFile = React.createClass({
                                 </div>
                                 <div className="row">
                                     <div className="hidden-xs col-sm-6 col-md-8 col-md-offset-1 col-lg-8">
-                                        <h2>test</h2>
+                                        {isImage}
                                     </div>
                                 </div>
                             </li>

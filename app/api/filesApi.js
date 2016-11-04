@@ -2,10 +2,9 @@ import filesModel from '../server/models/fileModel'
 
 import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfUploadDirExists'
 
-import multer from '../server/config/multer'
+import multer from '../server/libs/multer'
 
 import validateInputFile from '../server/helpers/validateInputFile'
-
 
 // GET "/"
 export function UploadPage(req, res) {
@@ -23,6 +22,7 @@ export function UploadFile(req, res) {
 
         const file = validateInputFile(req.file)
 
+
         let newFile = new filesModel(file.getFullFileInfo())
         newFile.save(err => {
             if (err) res.end("Ошибка базы данных")
@@ -36,7 +36,7 @@ export function UploadFile(req, res) {
 export function CurrentFile(req, res) {
     filesModel.findOne(
         { fileToken: req.params.fileToken },
-        { _id: 0, localFileName: 0, filePath: 0, __v: 0 },
+        { _id: 0, __v: 0 },
         (err, file) => {
             if (err) res.send({ error: "Server Error" })
 

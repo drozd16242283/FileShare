@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { browserHistory, Router, Route, IndexRoute  } from 'react-router'
 
-import AppNavigation from './components/AppNavigation/'
+import AppNavigation from './components/AppNavigation'
 
 import UploadFilesPage from './components/File/UploadFiles'
 import currentFilePage from './components/File/CurrentFile'

@@ -17,6 +17,7 @@ const app = express()
 const PATH_TO_INDEX_FILE = path.resolve(__dirname, '../public', 'index.html')
 
 
+
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended:true }))
 
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 
 
 app.use('/api', api)
+
 
 
 
