@@ -10,25 +10,35 @@ import './currentFile.css'
 const CurrentFile = React.createClass({
     getInitialState() {
         return {
-            fileData: {}
+            fileInfo: {}
         }
     },
 
     componentDidMount() {
         const fileToken = this.props.params.fileToken
 
-        api.currentFileData(fileToken)
-            .then(fileData => {
+        api.currentFileInfo(fileToken)
+            .then(fileInfo => {
                 this.setState({
-                    fileData: fileData
+                    fileInfo: fileInfo
                 })
             })
     },
 
+    ifImageComponent() {
+        const imgDest  = this.state.fileInfo.fileDestination
+        const fileName = this.state.fileInfo.localFileName
+        const isImage  = this.state.fileInfo.isImage
+
+        const imgOrNone = isImage
+            ? <div><img src={`${imgDest}/${fileName}`} /></div>
+            : false
+
+        return imgOrNone
+    },
+
     render() {
-        const imgDest  = this.state.fileData.fileDestination
-        const fileName = this.state.fileData.localFileName
-        const isImage  = this.state.fileData.isImage ? <div><img src={`${imgDest}/${fileName}`}></img></div> : <p>fal</p>
+        const img = this.ifImageComponent()
 
         return(
             <div className="container-fluid fileInfo">
@@ -38,11 +48,11 @@ const CurrentFile = React.createClass({
                             <li className="list-group-item">
                                 <div className="file-show-title">
                                     <h3 className="userName">User Name</h3>
-                                    <span className="fileName">{this.state.fileData.fileName}</span>
+                                    <span className="fileName">{this.state.fileInfo.fileName}</span>
                                 </div>
                                 <div className="row">
                                     <div className="hidden-xs col-sm-6 col-md-8 col-md-offset-1 col-lg-8">
-                                        {isImage}
+                                        {img}
                                     </div>
                                 </div>
                             </li>

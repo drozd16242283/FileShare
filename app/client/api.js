@@ -7,7 +7,7 @@ export default {
             .then(fData => handleFilesList(fData))
     },
 
-    currentFileData(fileToken) {
+    currentFileInfo(fileToken) {
         return fetch(`/api/${fileToken}`)
             .then(resp => resp.json())
     }
