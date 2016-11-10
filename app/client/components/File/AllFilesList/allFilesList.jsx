@@ -52,8 +52,8 @@ const AllFilesList = React.createClass({
                         <form className="form-inline pull-right fileSearchForm">
                             <div className="form-group">
                                 <input onChange={this._handlerSubmit}
-                                        type="search"
-                                        placeholder="Поиск файлов" />
+                                    type="search"
+                                    placeholder="Поиск файлов" />
                             </div>
                         </form>
                     </div>

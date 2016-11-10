@@ -56,6 +56,7 @@ module.exports = {
     plugins,
     output: {
         path: OUTPUT_DIRECTORY,
+        publicPath: '/',
         filename: BUNDLE_FILE_NAME
     },
     module: {

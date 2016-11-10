@@ -11,8 +11,8 @@
     "resave": true,
     "saveUninitialized": true,
     "cookie": {
-      "httpOnly": true,
-      "maxAge": null
+      "path": "/",
+      "httpOnly": true
     }
   }
 }

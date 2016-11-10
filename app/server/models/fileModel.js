@@ -10,11 +10,11 @@ let FileSchema = new mongoose.Schema({
     fileComment:     String,
     fileToken:       String,
     downloadLink:    String,
-    isImage:         String
+    isImage:         Boolean
 })
 
 
-let FileModel = mongoose.model('File', FileSchema)
+const FileModel = mongoose.model('File', FileSchema)
 
 
 export default FileModel

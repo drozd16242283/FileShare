@@ -1,11 +1,9 @@
-'use strict';
-const bcrypt   = require('bcrypt-node');
-const mongoose = require('../libs/mongoose');
+import bcrypt from 'bcrypt-node'
+import mongoose from '../libs/mongoose'
 
-let Schema = mongoose.Schema;
+let Schema = mongoose.Schema
 
-
-let User = new Schema({
+let UserSchema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -19,29 +17,28 @@ let User = new Schema({
         type: String,
         required: true
     },
-    filePath: {
-        type: String,
-        required: true
-    }
+    fileToken: String
 });
 
-User.methods.hashPassword = password => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
+UserSchema.methods.encryptPassword = password => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
 
-User.virtual('password')
-    .set(password => {
-        this._plainPassword = password;
-        this.salt = Math.random() + '';
-        this.hashedPassword = this.hashPassword(password);
+UserSchema.virtual('password')
+    .set(function(password) {
+        this._plainPassword = password
+        this.salt = Math.random() + ''
+        this.hashedPassword = this.encryptPassword(password)
     })
-    .get(() => {
-        return this._plainPassword;
-    });
+    .get(function() {
+        return this._plainPassword
+    })
 
-User.methods.checkPassword = password => {
-    return bcrypt.compareSync(password, this.hashedPassword);
-};
+UserSchema.methods.checkPassword = password => {
+    return bcrypt.compareSync(password, this.hashedPassword)
+}
 
 
-exports.User = mongoose.model('User', User);
+const UserModel = mongoose.model('User', UserSchema)
+
+export default UserModel

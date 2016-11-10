@@ -1,6 +1,5 @@
 import React from 'react'
-
-import path from 'path'
+import classNames from 'classnames'
 
 import api from '../../../api'
 
@@ -31,34 +30,68 @@ const CurrentFile = React.createClass({
         const isImage  = this.state.fileInfo.isImage
 
         const imgOrNone = isImage
-            ? <div><img src={`${imgDest}/${fileName}`} /></div>
+            ? <div><img src={`${imgDest}/${fileName}`} className="img-responsive" /></div>
             : false
 
         return imgOrNone
     },
 
     render() {
-        const img = this.ifImageComponent()
+        const imageComponent = this.ifImageComponent()
+
+        const filesListClass = classNames(
+            'hidden-xs',
+            'col-sm-8 col-sm-offset-2',
+            'col-md-8 col-md-offset-2',
+            'col-lg-6 col-lg-offset-3'
+        )
+        const fileInfoClass = classNames(
+            'file',
+            'col-sm-8',
+            'col-lg-8'
+        )
+        const downloadButton = classNames(
+            'btn',
+            'btn-primary',
+            'btn-sm'
+        )
 
         return(
             <div className="container-fluid fileInfo">
                 <div className="row">
-                    <div className="hidden-xs col-sm-6 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-                        <ul className="media-list">
-                            <li className="list-group-item">
-                                <div className="file-show-title">
-                                    <h3 className="userName">User Name</h3>
-                                    <span className="fileName">{this.state.fileInfo.fileName}</span>
+                    <div className={filesListClass}>
+                        <div className="main media">
+                            <div className="media-left">
+                                <a href="#"><h1>A</h1></a>
+                            </div>
+                            <div className="media-body">
+                                <h4 className="media-heading fileName">
+                                    <span>{this.state.fileInfo.fileName}</span>
+                                </h4>
+                                <div>
+                                    {imageComponent}
                                 </div>
+                            </div>
+                            <div className="container">
                                 <div className="row">
-                                    <div className="hidden-xs col-sm-6 col-md-8 col-md-offset-1 col-lg-8">
-                                        {img}
+                                    <div className={fileInfoClass}>
+                                        <p>some text example</p>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                            <div>
+                                <button className={downloadButton}>Скачать</button>
+                            </div>
+                            <div className="commentBlock container">
+                                <div className="form-horizontal">
+                                    <div className="form-group">
+                                        <input type="search" className="form-control" placeholder="Добавить коментарий"></input>
+                                        <button className="addComment btn">Добавить коментарий</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         );

@@ -1,0 +1,10 @@
+<?php
+
+$config['db']['host'] = 'localhost';
+$config['db']['port'] = '3306';
+$config['db']['username'] = 'invoker';
+$config['db']['password'] = 'invoker';
+$config['db']['dbname'] = 'xf';
+
+
+$config['superAdmins'] = '1';
