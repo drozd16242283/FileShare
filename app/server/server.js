@@ -3,7 +3,9 @@ import path         from 'path'
 import bodyParser   from 'body-parser'
 import cookieParser from 'cookie-parser'
 import session      from 'express-session'
+import passport     from 'passport'
 import config       from './config'
+
 //const log          = require('./libs/log')(module);
 import api from '../api/'
 const MongoStore = require('connect-mongo')(session)
@@ -27,6 +29,11 @@ app.use(session({
     store: new MongoStore({ url: config.get('db:dbAdress') })
 }))
 
+// init passport
+app.use(passport.initialize())
+app.use(passport.session())
+import localPassport from './libs/authentication/authStrategy'
+localPassport(passport)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -43,14 +50,10 @@ app.get('*', (req, res) => {
 })
 
 
-//require('./app/config/passport');
-
-
 // Starting the server
 app.listen(config.get('port'), function() {
     console.log('Server start at ' + config.get('port') + ' port!')
 })
-
 
 
 export default app

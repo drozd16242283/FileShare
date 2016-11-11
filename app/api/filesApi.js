@@ -1,9 +1,7 @@
+
 import filesModel from '../server/models/fileModel'
-
 import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfUploadDirExists'
-
 import multer from '../server/libs/multer'
-
 import validateInputFile from '../server/helpers/validateInputFile'
 
 // GET "/"
@@ -59,12 +57,25 @@ export function findAllFiles(req, res) {
     .limit(20)
 }
 
+// POST "/signup"
+export function SignUp(req, res) {
+    console.log(req.session)
+
+    res.redirect('/')
+}
+
+// POST "/signin"
+export function SignIn(req, res) {
+    console.log(req.session)
+
+    res.redirect('/')
+}
 
 export function ListOfUserFiles(req, res) {
 
-};
+}
 
 // GET
 export function DeleteFile(req, res) {
 
-};
+}

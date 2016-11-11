@@ -7,20 +7,21 @@ const SignInPage = React.createClass({
         return (
             <div className="container">
                 <form className="loginForm"
-                        method="post"
-                        name="loginForm">
+                    action="/api/signin"
+                    method="post"
+                    name="loginForm">
 
-                        <ul>
-                            <li>
-                                <h2>Войти</h2>
-                            </li>
-                            <li>
-                                <label for="email">* Email</label>
-                                <input type="email" name="email" required/>
-                            </li>
-                            <li>
-                                <label for="password">* Пароль</label>
-                                <input type="password" name="password" required/>
+                    <ul>
+                        <li>
+                            <h2>Войти</h2>
+                        </li>
+                        <li>
+                            <label for="email">* Email</label>
+                            <input type="email" name="email" required/>
+                        </li>
+                        <li>
+                            <label for="password">* Пароль</label>
+                            <input type="password" name="passwd" required/>
                             </li>
                             <li>
                                 <button className="btn btn-success" type="submit">Войти</button>

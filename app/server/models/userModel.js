@@ -1,41 +1,42 @@
-import bcrypt from 'bcrypt-node'
+import bcrypt   from 'bcrypt-node'
 import mongoose from '../libs/mongoose'
 
-let Schema = mongoose.Schema
 
-let UserSchema = new Schema({
-    username: {
+let UserSchema = new mongoose.Schema({
+    username: String,
+    email: {
         type: String,
-        unique: true,
-        required: true
+        unique: true
     },
-    hashedPassword: {
-        type: String,
-        required: true
-    },
-    salt: {
-        type: String,
-        required: true
-    },
-    fileToken: String
-});
+    password: String,
+    fileToken: Array
+})
 
-UserSchema.methods.encryptPassword = password => {
+
+UserSchema.methods.encryptPassword = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-UserSchema.virtual('password')
-    .set(function(password) {
-        this._plainPassword = password
-        this.salt = Math.random() + ''
-        this.hashedPassword = this.encryptPassword(password)
-    })
-    .get(function() {
-        return this._plainPassword
-    })
+UserSchema.statics.comparePassword = function(password, hash, callback) {
+    bcrypt.compare(password, hash, callback)
+}
 
-UserSchema.methods.checkPassword = password => {
-    return bcrypt.compareSync(password, this.hashedPassword)
+UserSchema.statics.getUserByUsername = function(username, callback) {
+    this.findOne({ username: username }, callback)
+}
+
+UserSchema.statics.getUserByEmail = function(email, callback) {
+    this.findOne({ email: email }, callback)
+}
+
+UserSchema.statics.getUserById = function(id, callback) {
+    return this.findById({ _id: id }, callback)
+}
+
+UserSchema.methods.createUser = function(newUser, callback) {
+    newUser.password = this.encryptPassword(newUser.password)
+
+    newUser.save(callback)
 }
 
 
