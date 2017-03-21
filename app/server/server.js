@@ -35,6 +35,7 @@ app.use(passport.session())
 import localPassport from './libs/authentication/authStrategy'
 localPassport(passport)
 
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")

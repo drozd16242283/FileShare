@@ -1,3 +1,3 @@
-import allFilesList from './allFilesList'
+import AllFilesList from './AllFilesList'
 
-export default allFilesList
+export default AllFilesList

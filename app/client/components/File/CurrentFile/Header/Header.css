@@ -1,0 +1,26 @@
+.header {
+    margin: 20px 20px;
+}
+
+.userNameLogo {
+    height: 50px;
+    width: 50px;
+    float: left;
+    border-radius: 3px;
+    background-color: #e4e8ea;
+}
+
+.userNameLogo h3 {
+    margin: 10px 18px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.headerFileInfo {
+    margin-left: 60px;
+}
+
+.headerFileInfo h5 {
+    font-weight: bold;
+    padding-top: 3px;
+}

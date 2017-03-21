@@ -1,0 +1,10 @@
+.commentInput {
+    margin: 20px 20px;
+    width: 560px;
+    height: 35px;
+    border-radius: 3px;
+}
+
+.commentInput:focus {
+    height: 70px;
+}

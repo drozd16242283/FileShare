@@ -3,6 +3,7 @@ ssh/
 app/public/uploads/
 app/public/build/
 .git/
+.DS_Store
 .env
 .jshintrc
 .tern-project

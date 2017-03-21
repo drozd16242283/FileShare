@@ -1,11 +1,10 @@
 import React from 'react'
 
-import api from '../../../api'
 import FileComponent from './FileComponent'
+import api from '../../../api'
 
-import { Link } from 'react-router'
+import './AllFilesList.css'
 
-import './allFilesList.css'
 
 const AllFilesList = React.createClass({
     getInitialState() {

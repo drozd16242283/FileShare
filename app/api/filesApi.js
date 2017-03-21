@@ -1,8 +1,10 @@
-
 import filesModel from '../server/models/fileModel'
 import ifCurrentUploadDirExists from '../server/helpers/uploadDirectory/checkIfUploadDirExists'
 import multer from '../server/libs/multer'
 import validateInputFile from '../server/helpers/validateInputFile'
+
+
+const SITE_NAME = 'http://localhost:7777'
 
 // GET "/"
 export function UploadPage(req, res) {
@@ -17,15 +19,18 @@ export function UploadFile(req, res) {
         if (err) res.end("Ошибка загрузки файла!")
 
         //const ValidFileInfo = validateInputFile(req.file)
-
         const file = validateInputFile(req.file)
 
-
         let newFile = new filesModel(file.getFullFileInfo())
+
+        if (req.session.user) {
+          newFile.fileOwner = req.session.user
+        }
+
         newFile.save(err => {
             if (err) res.end("Ошибка базы данных")
 
-            res.redirect(`http://localhost:7777/${file.fileToken}`)
+            res.redirect(`${SITE_NAME}/${file.fileToken}`)
         })
     })
 }
@@ -34,7 +39,7 @@ export function UploadFile(req, res) {
 export function CurrentFile(req, res) {
     filesModel.findOne(
         { fileToken: req.params.fileToken },
-        { _id: 0, __v: 0 },
+        { _id: 0, fileName: 0, filePath: 0, __v: 0 },
         (err, file) => {
             if (err) res.send({ error: "Server Error" })
 

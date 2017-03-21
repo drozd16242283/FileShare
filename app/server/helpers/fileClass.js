@@ -10,6 +10,7 @@ class File {
         this.fileComment     = ''
         this.fileToken       = this.createFileToken()
         this.isImage         = this.isImage(file.mimetype)
+        this.fileOwner       = 'Анонимно'
     }
 
     getFullFileInfo() {
@@ -22,14 +23,15 @@ class File {
             fileComment:     this.fileComment,
             fileToken:       this.fileToken,
             downloadLink:    this.createDownloadLink(),
-            isImage:         this.isImage
+            isImage:         this.isImage,
+            fileOwner:       this.fileOwner
         };
     }
 
 
     // In this function i cut system path like a "var/www/nodejs/FileShare"
     cutFilePath(path) {
-        const SYMBOLS_OF_SYSTEM_PATH = 26
+        const SYMBOLS_OF_SYSTEM_PATH = 24 //33
         const PATH_LENGTH = path.length
 
         let newFilePath = path.slice(SYMBOLS_OF_SYSTEM_PATH, PATH_LENGTH)
@@ -39,7 +41,7 @@ class File {
 
     // In this function i cut the original file dest and get "uploads/${currentDate}"
     cutFileDestination(originalFileDest) {
-        const USLESS_SYMBOLS =  37
+        const USLESS_SYMBOLS =  44
         const DEST_LENGTH = originalFileDest.length
 
         const newFileDest = originalFileDest.slice(USLESS_SYMBOLS, DEST_LENGTH)

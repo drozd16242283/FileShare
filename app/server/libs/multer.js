@@ -14,7 +14,7 @@ let limits = {
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, getCurrentUploadDir),
-    filename:    (req, file, cb) => cb(null, file.originalname + '-' + Date.now())
+    filename:    (req, file, cb) => cb(null, file.originalname)
 })
 
 let uploadStorage = multer({ storage: storage, limits: limits }).single('file')

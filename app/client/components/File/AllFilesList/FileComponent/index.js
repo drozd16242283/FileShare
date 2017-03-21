@@ -1,3 +1,3 @@
-import fileComponent from './fileComponent'
+import FileComponent from './FileComponent'
 
-export default fileComponent
+export default FileComponent

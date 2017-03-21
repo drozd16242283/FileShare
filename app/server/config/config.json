@@ -2,7 +2,7 @@
   "port": 7777,
   "UploadDir": "uploads",
   "db": {
-    "dbAdress": "mongodb://localhost/fileShare"
+    "dbAdress": "mongodb://127.0.0.1:27017/fileShare"
   },
   "apiPrefix": "",
   "maxUploadFileSizeMB" : "50",

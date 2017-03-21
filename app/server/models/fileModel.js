@@ -10,7 +10,8 @@ let FileSchema = new mongoose.Schema({
     fileComment:     String,
     fileToken:       String,
     downloadLink:    String,
-    isImage:         Boolean
+    isImage:         Boolean,
+    fileOwner:       String
 })
 
 
