@@ -16,11 +16,13 @@
     font-weight: bold;
 }
 
-.headerFileInfo {
+.fileOwner {
     margin-left: 60px;
+    padding-top: 15px;
+    font-weight: bold;
 }
 
-.headerFileInfo h5 {
-    font-weight: bold;
-    padding-top: 3px;
+.fileName {
+    padding-top: 30px;
+    font-weight: 500;
 }

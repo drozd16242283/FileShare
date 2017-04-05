@@ -4,7 +4,7 @@ import config              from '../config/'
 import getCurrentUploadDir from '../helpers/uploadDirectory/getPathToUploadDir'
 
 
-// MAX_FILE_SIZE is set max size of uploaded files is bytes (50 mb)
+// MAX_FILE_SIZE is set max size of upload file is bytes (50 mb)
 const MAX_FILE_SIZE = 1000000 * (config.get('maxUploadFileSizeMB'))
 
 let limits = {

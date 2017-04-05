@@ -30,16 +30,16 @@ const CurrentFile = React.createClass({
     },
 
     render() {
-        let { localFileName, fileDestination, fileSize, fileComment,
-              fileToken, downloadLink, isImage, fileOwner } = this.state.fileInfo
+        let { fileName, fileDestination, fileSize, fileComment,
+              fileToken, downloadLink, isImage, fileOwner, uploadDate } = this.state.fileInfo
 
         const imageComponent = isImage
-            ? <Image fileDest={fileDestination} fileName={localFileName} />
+            ? <Image fileDest={fileDestination} fileName={fileName} />
             : false
 
         return (
             <div className="currentFileInfo">
-                <Header fileName={localFileName} fileOwner={fileOwner} />
+                <Header fileName={fileName} fileOwner={fileOwner} />
                 {imageComponent}
                 <FileInfo />
                 <DownloadButton />

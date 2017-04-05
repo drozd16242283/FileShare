@@ -2,6 +2,7 @@ node_modules/
 ssh/
 app/public/uploads/
 app/public/build/
+.DS_Store
 .git/
 .DS_Store
 .env

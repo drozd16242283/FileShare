@@ -4,8 +4,11 @@
   "db": {
     "dbAdress": "mongodb://127.0.0.1:27017/fileShare"
   },
+  "siteName": "http://localhost:7777",
   "apiPrefix": "",
-  "maxUploadFileSizeMB" : "50",
+  "maxUploadFileSizeMB" : 50,
+  "filesStorageDaysWithoutRegister" : 6,
+  "filesStorageDaysWithRegister": 21,
   "session": {
     "secret": "secret_key",
     "resave": true,

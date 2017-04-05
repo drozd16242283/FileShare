@@ -1,19 +1,22 @@
+import pathExists from 'path-exists'
 import mkdirp from 'mkdirp'
 
-import currentPathToUploadDirectory from './getPathToUploadDir'
-
+import pathToUploadDirectory from './getPathToUploadDir'
 import log from '../../libs/log'
 
 const logger = log(module)
 
-
 /**
-* This function is create the upload directory by {currentUploadDirectory} value
-* For example: "uploads/07-08-2016"
-*/
-let createUploadDirectory = () => {
-    mkdirp(currentPathToUploadDirectory, (err, success) => {
-        if (err) logger.error(err)
+ *  This function is check if upload directory exist.
+ *  If not, it create them.
+ */
+const createUploadDirectory = () => {
+    pathExists(pathToUploadDirectory).then(exists => {
+        if (!exists) {
+            mkdirp(pathToUploadDirectory, (err, success) => {
+                if (err) logger.error(err)
+            })
+        }
     })
 }
 

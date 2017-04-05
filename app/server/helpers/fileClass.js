@@ -1,22 +1,27 @@
 import randomToken from 'rand-token'
+import date from 'date-fns'
+import expiresDate from './expiresDate'
+import config from '../config'
+
+const FREE_STORAGE_DAYS = config.get('filesStorageDaysWithoutRegister')
 
 class File {
     constructor(file) {
-        this.fileName        = file.originalname
-        this.localFileName   = file.filename
+        this.fileName        = file.filename
         this.filePath        = this.cutFilePath(file.path)
         this.fileDestination = this.cutFileDestination(file.destination)
         this.fileSize        = this.setFormatFileSize(file.size)
         this.fileComment     = ''
         this.fileToken       = this.createFileToken()
         this.isImage         = this.isImage(file.mimetype)
-        this.fileOwner       = 'Анонимно'
+        this.fileOwner       = 'Анонимно',
+        this.uploadDate      = this.getCurrentDateAndTime(),
+        this.expiresDate     = expiresDate(FREE_STORAGE_DAYS)
     }
 
     getFullFileInfo() {
         return {
             fileName:        this.fileName,
-            localFileName:   this.localFileName,
             filePath:        this.filePath,
             fileDestination: this.fileDestination,
             fileSize:        this.fileSize,
@@ -24,8 +29,10 @@ class File {
             fileToken:       this.fileToken,
             downloadLink:    this.createDownloadLink(),
             isImage:         this.isImage,
-            fileOwner:       this.fileOwner
-        };
+            fileOwner:       this.fileOwner,
+            uploadDate:      this.uploadDate,
+            expiresDate:     this.expiresDate
+        }
     }
 
 
@@ -34,19 +41,16 @@ class File {
         const SYMBOLS_OF_SYSTEM_PATH = 24 //33
         const PATH_LENGTH = path.length
 
-        let newFilePath = path.slice(SYMBOLS_OF_SYSTEM_PATH, PATH_LENGTH)
-
-        return newFilePath
+        return path.slice(SYMBOLS_OF_SYSTEM_PATH, PATH_LENGTH)
     }
 
     // In this function i cut the original file dest and get "uploads/${currentDate}"
     cutFileDestination(originalFileDest) {
-        const USLESS_SYMBOLS =  44
+        const UPLOAD_PATH_LENGTH = 18
         const DEST_LENGTH = originalFileDest.length
+        const USEFUL_SYMBOLS =  DEST_LENGTH - UPLOAD_PATH_LENGTH
 
-        const newFileDest = originalFileDest.slice(USLESS_SYMBOLS, DEST_LENGTH)
-
-        return newFileDest
+        return originalFileDest.slice(USEFUL_SYMBOLS, DEST_LENGTH)
     }
 
     setFormatFileSize(size) {
@@ -81,6 +85,10 @@ class File {
         let result = (imageType === 'image') ? true : false
 
         return result
+    }
+
+    getCurrentDateAndTime() {
+        return date.format(new Date(), 'DD-MM-YYYY HH:mm')
     }
 
 }

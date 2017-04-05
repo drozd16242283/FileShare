@@ -1,11 +1,13 @@
 import path from 'path'
+import format from 'date-fns/format'
 import config from '../../config/'
-import currentDate from './getCurrentDate'
 
 
-const uploadDir = `${config.get('UploadDir')}/${currentDate()}`
+let currentDate = format(new Date(), 'DD-MM-YYYY')
 
-const currentUploadDirectory = path.join(__dirname, `../../../public/${uploadDir}`)
+const uploadDirName = `${config.get('UploadDir')}/${currentDate}`
+
+const currentUploadDirectory = path.join(__dirname, `../../../public/${uploadDirName}`)
 
 
 export default currentUploadDirectory

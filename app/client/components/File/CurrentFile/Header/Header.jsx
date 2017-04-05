@@ -8,10 +8,9 @@ const Header = props => {
             <div className="userNameLogo">
                 <h3>A</h3>
             </div>
-            <div className="headerFileInfo">
-                <h5>{props.fileOwner}</h5>
-                <p>{props.fileName}</p>
-            </div>
+            <h5 className="fileOwner">{props.fileOwner}</h5>
+            <h3 className="fileName">{props.fileName}</h3>
+
         </div>
     )
 

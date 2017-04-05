@@ -3,7 +3,6 @@ import mongoose from '../libs/mongoose'
 
 let FileSchema = new mongoose.Schema({
     fileName:        String,
-    localFileName:   String,
     filePath:        String,
     fileDestination: String,
     fileSize:        String,
@@ -11,7 +10,9 @@ let FileSchema = new mongoose.Schema({
     fileToken:       String,
     downloadLink:    String,
     isImage:         Boolean,
-    fileOwner:       String
+    fileOwner:       String,
+    uploadDate:      String,
+    expiresDate:     String
 })
 
 

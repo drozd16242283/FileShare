@@ -17,13 +17,11 @@ const AppNavigation = React.createClass({
                             <Link className="navbar-brand" to="/">File Share</Link>
                         </div>
                         <div className="navbar-collapse">
-                            <section className="hidden-xs">
-                                <ul className="nav navbar-nav navbar-right">
-                                    <li><Link to="/files">Все файлы</Link></li>
-                                    <li><Link to="/signup">Зарегистрироваться</Link></li>
-                                    <li><Link to="/signin">Войти</Link></li>
-                                </ul>
-                            </section>
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><Link to="/files">Все файлы</Link></li>
+                                <li><Link to="/signup">Зарегистрироваться</Link></li>
+                                <li><Link to="/signin">Войти</Link></li>
+                            </ul>
                         </div>
                     </div>
                 </nav>
